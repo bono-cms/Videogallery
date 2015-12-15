@@ -11,7 +11,7 @@
 
 namespace Videogallery\Service;
 
-use Admin\Service\AbstractManager;
+use Cms\Service\AbstractManager;
 use Videogallery\Storage\FileMapperInterface;
 use stdclass;
 

@@ -11,7 +11,7 @@
 
 namespace Videogallery\Storage\MySQL;
 
-use Admin\Storage\MySQL\AbstractMapper;
+use Cms\Storage\MySQL\AbstractMapper;
 use stdclass;
 
 final class CategoryMapper extends AbstractMapper
