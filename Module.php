@@ -11,10 +11,10 @@
 
 namespace Videogallery;
 
-use Bono\Application\Module\AbstractModule;
+use Cms\AbstractCmsModule;
 use Videogallery\Service\FileManager;
 
-final class Module extends AbstractModule
+final class Module extends AbstractCmsModule
 {
 	/**
 	 * {@inheritDoc}
