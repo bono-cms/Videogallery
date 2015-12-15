@@ -32,10 +32,7 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
      */
     public function fetchById($id)
     {
-        $query = sprintf('SELECT * FROM `%s` WHERE `id` =:id', $this->table);
-        return $this->db->query($query, array(
-            ':id' => $id
-        ));
+        return $this->findByPk($id);
     }
 
     /**
