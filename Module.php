@@ -21,20 +21,11 @@ final class Module extends AbstractCmsModule
 	 */
 	public function getServiceProviders()
 	{
-		$admin = $this->moduleManager->getModule('Admin');
-		
-		// Grab a mapper
-		$mapperFactory = $admin->getService('mapperFactory');
-		$languageManager = $admin->getService('languageManager');
-		
-		$categoryMapper = $mapperFactory->build('/Videogallery/Storage/MySQL/CategoryMapper');
-		$categoryMapper->setLangId($languageManager->getCurrentId());
-		
-		$fileMapper = $mapperFactory->build('/Videogallery/Storage/MySQL/FileMapper');
-		$fileMapper->setLangId($languageManager->getCurrentId());
-		
+		$categoryMapper = $this->getMapper('/Videogallery/Storage/MySQL/CategoryMapper');
+		$fileMapper = $this->getMapper('/Videogallery/Storage/MySQL/FileMapper');
+
 		$fileManager = new FileManager($fileMapper);
-		
+
 		return array(
 			'fileManager' => $fileManager
 		);
