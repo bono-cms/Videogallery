@@ -15,5 +15,5 @@ use stdclass;
 
 interface FileMapperInterface
 {
-	
+    
 }

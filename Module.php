@@ -16,18 +16,18 @@ use Videogallery\Service\FileManager;
 
 final class Module extends AbstractCmsModule
 {
-	/**
-	 * {@inheritDoc}
-	 */
-	public function getServiceProviders()
-	{
-		$categoryMapper = $this->getMapper('/Videogallery/Storage/MySQL/CategoryMapper');
-		$fileMapper = $this->getMapper('/Videogallery/Storage/MySQL/FileMapper');
+    /**
+     * {@inheritDoc}
+     */
+    public function getServiceProviders()
+    {
+        $categoryMapper = $this->getMapper('/Videogallery/Storage/MySQL/CategoryMapper');
+        $fileMapper = $this->getMapper('/Videogallery/Storage/MySQL/FileMapper');
 
-		$fileManager = new FileManager($fileMapper);
+        $fileManager = new FileManager($fileMapper);
 
-		return array(
-			'fileManager' => $fileManager
-		);
-	}
+        return array(
+            'fileManager' => $fileManager
+        );
+    }
 }

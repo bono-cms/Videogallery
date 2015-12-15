@@ -13,54 +13,54 @@ namespace Videogallery\Controller\Admin\Category;
 
 final class Edit extends AbstractCategory
 {
-	/**
-	 * Shows editing form
-	 * 
-	 * @param string $id
-	 * @return string
-	 */
-	public function indexAction($id)
-	{
-		$category = $this->getCategoryManager()->fetchById($id);
-		
-		if ($category !== false) {
-			
-			$this->loadSharedPlugins();
-			$title = 'Edit the category';
-			
-			return $this->viewModel->render($this->getTemplatePath(), $this->getSharedVars(array(
-				'breadcrumbs' => array(
-					'#' => $title
-				),
-				
-				'title' => $title,
-				'category' => $category
-			)));
-			
-		} else {
-			
-			return false;
-		}
-	}
+    /**
+     * Shows editing form
+     * 
+     * @param string $id
+     * @return string
+     */
+    public function indexAction($id)
+    {
+        $category = $this->getCategoryManager()->fetchById($id);
+        
+        if ($category !== false) {
+            
+            $this->loadSharedPlugins();
+            $title = 'Edit the category';
+            
+            return $this->viewModel->render($this->getTemplatePath(), $this->getSharedVars(array(
+                'breadcrumbs' => array(
+                    '#' => $title
+                ),
+                
+                'title' => $title,
+                'category' => $category
+            )));
+            
+        } else {
+            
+            return false;
+        }
+    }
 
-	/**
-	 * Updates a category
-	 * 
-	 * @return string
-	 */
-	public function updateAction()
-	{
-		if ($this->request->isPost() && $this->request->isAjax()) {
-			
-			$formValidator = $this->getValidator();
-			
-			if (1) {
-				
-				
-			} else {
-				
-				return $formValidator->getErrors();
-			}
-		}
-	}
+    /**
+     * Updates a category
+     * 
+     * @return string
+     */
+    public function updateAction()
+    {
+        if ($this->request->isPost() && $this->request->isAjax()) {
+            
+            $formValidator = $this->getValidator();
+            
+            if (1) {
+                
+                
+            } else {
+                
+                return $formValidator->getErrors();
+            }
+        }
+    }
 }

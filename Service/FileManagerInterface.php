@@ -13,5 +13,5 @@ namespace Videogallery\Service;
 
 interface FileManagerInterface
 {
-	
+    
 }

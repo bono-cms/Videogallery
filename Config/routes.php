@@ -10,16 +10,16 @@
  */
 
 return array(
-	
-	'/admin/module/videogallery' => array(
-		'controller' => 'Admin:File:Browser@indexAction'
-	),
-	
-	'/admin/module/videogallery/file/add' => array(
-		'controller' => 'Admin:File:Add@indexAction'
-	),
-	
-	'/admin/module/videogallery/file/add.ajax' => array(
-		'controller'=> 'Admin:File:Add@addAction'
-	)
+    
+    '/admin/module/videogallery' => array(
+        'controller' => 'Admin:File:Browser@indexAction'
+    ),
+    
+    '/admin/module/videogallery/file/add' => array(
+        'controller' => 'Admin:File:Add@indexAction'
+    ),
+    
+    '/admin/module/videogallery/file/add.ajax' => array(
+        'controller'=> 'Admin:File:Add@addAction'
+    )
 );

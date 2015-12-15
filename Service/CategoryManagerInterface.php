@@ -5,5 +5,5 @@ namespace Videogallery\Service;
 
 interface CategoryManagerInterface
 {
-	
+    
 }

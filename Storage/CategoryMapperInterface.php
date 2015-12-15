@@ -13,5 +13,5 @@ namespace Videogallery\Storage;
 
 interface CategoryMapperInterface
 {
-	
+    
 }
