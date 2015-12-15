@@ -14,6 +14,10 @@ return array(
     '/admin/module/videogallery' => array(
         'controller' => 'Admin:Browser@indexAction'
     ),
+
+    '/admin/module/videogallery/page/(:var)' => array(
+        'controller' => 'Admin:Browser@indexAction'
+    ),
     
     '/admin/module/videogallery/file/add' => array(
         'controller' => 'Admin:File:Add@indexAction'
