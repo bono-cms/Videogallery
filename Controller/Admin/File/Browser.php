@@ -35,7 +35,7 @@ final class Browser extends AbstractController
                 '#' => 'Videogallery'
             ),
             
-            'files' => $fileManager->fetchAllByPage($page, 10),
+            'files' => $fileManager->fetchAllByPage($page, 10, false),
             
             // Pagination stuff
             'paginator' => $fileManager->getPaginator(),

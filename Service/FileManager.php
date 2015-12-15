@@ -128,22 +128,11 @@ final class FileManager extends AbstractManager implements FileManagerInterface
      * 
      * @param integer $page
      * @param integer $itemsPerPage
+     * @param boolean $published Whether to fetch only published records
      * @return array
      */
-    public function fetchAllByPage($page, $itemsPerPage)
+    public function fetchAllByPage($page, $itemsPerPage, $published)
     {
-        return $this->prepareResults($this->fileMapper->fetchAllByPage($page, $itemsPerPage));
-    }
-
-    /**
-     * Fetch all published records filtered by pagination
-     * 
-     * @param integer $page
-     * @param integer $itemsPerPage
-     * @return array
-     */
-    public function fetchAllPublishedByPage($page, $itemsPerPage)
-    {
-        return $this->prepareResults($this->fileMapper->fetchAllPublishedByPage($page, $itemsPerPage));
+        return $this->prepareResults($this->fileMapper->fetchAllByPage($page, $itemsPerPage, $published));
     }
 }

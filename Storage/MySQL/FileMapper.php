@@ -13,38 +13,15 @@ namespace Videogallery\Storage\MySQL;
 
 use Cms\Storage\MySQL\AbstractMapper;
 use Videogallery\Storage\FileMapperInterface;
-use stdclass;
 
 final class FileMapper extends AbstractMapper implements FileMapperInterface
 {
     /**
      * {@inheritDoc}
      */
-    protected $table = 'bono_module_videogallery_files';
-
-    /**
-     * Count all records
-     * 
-     * @return integer
-     */
-    private function countAll()
+    public static function getTableName()
     {
-        return $this->db->count($this->table, array(
-            'langId' => $this->getLangId()
-        ));
-    }
-
-    /**
-     * Count all published records
-     * 
-     * @return integer
-     */
-    private function countAllPublished()
-    {
-        return $this->db->count($this->table, array(
-            'langId'    => $this->getLangId(),
-            'published' => '1'
-        ));
+        return 'bono_module_videogallery_files';
     }
 
     /**
@@ -66,52 +43,22 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
      * 
      * @param integer $page
      * @param integer $itemsPerPage
+     * @param boolean $published Whether to fetch only published records
      * @return array
      */
-    public function fetchAllByPage($page, $itemsPerPage)
+    public function fetchAllByPage($page, $itemsPerPage, $published)
     {
-        // Tweak paginator's instance
-        $this->paginator->setTotalAmount($this->countAll())
-                        ->setItemsPerPage($itemsPerPage)
-                        ->setCurrentPage($page);
-        
-        // Build a query now
-        $query = sprintf('SELECT * FROM `%s` WHERE `langId` =:langId ORDER BY `id` DESC LIMIT %s, %s', 
-            $this->table,
-            $this->paginator->countOffset(), 
-            $this->paginator->getItemsPerPage()
-        );
-        
-        return $this->db->queryAll($query, array(
-            ':langId' => $this->getLangId()
-        ));
-    }
+        $db = $this->db->select('*')
+                       ->from(self::getTableName())
+                       ->whereEquals('langId', $this->getLangId());
 
-    /**
-     * Fetch all published records by page
-     * 
-     * @param integer $page
-     * @param integer $itemsPerPage
-     * @return array
-     */
-    public function fetchAllPublishedByPage($page, $itemsPerPage)
-    {
-        // Tweak paginator's instance
-        $this->paginator->setTotalAmount($this->countAllPublished())
-                        ->setItemsPerPage($itemsPerPage)
-                        ->setCurrentPage($page);
-        
-        // Build a query now
-        $query = sprintf('SELECT * FROM `%s` WHERE `langId` =:langId AND `published` =:published LIMIT %s, %s', 
-            $this->table, 
-            $this->paginator->countOffset(), 
-            $this->paginator->getItemsPerPage()
-        );
-        
-        return $this->db->queryAll($query, array(
-            ':langId' => $this->getLangId(),
-            ':published' => '1'
-        ));
+        if ($published === true) {
+            $db->andWhereEquals('published', '1');
+        }
+
+        return $db->orderBy('id')
+                  ->desc()
+                  ->paginate($page, $itemsPerPage)
+                  ->queryAll();
     }
-    
 }
