@@ -9,7 +9,7 @@
  * the license file that was distributed with this source code.
  */
 
-namespace Videogallery\Controller\Admin\File;
+namespace Videogallery\Controller\Admin;
 
 use Cms\Controller\Admin\AbstractController;
 use stdclass;

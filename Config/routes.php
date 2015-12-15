@@ -12,7 +12,7 @@
 return array(
     
     '/admin/module/videogallery' => array(
-        'controller' => 'Admin:File:Browser@indexAction'
+        'controller' => 'Admin:Browser@indexAction'
     ),
     
     '/admin/module/videogallery/file/add' => array(
