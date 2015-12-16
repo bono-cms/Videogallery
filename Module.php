@@ -13,6 +13,7 @@ namespace Videogallery;
 
 use Cms\AbstractCmsModule;
 use Videogallery\Service\FileManager;
+use Videogallery\Service\CategoryManager;
 
 final class Module extends AbstractCmsModule
 {
@@ -25,9 +26,11 @@ final class Module extends AbstractCmsModule
         $fileMapper = $this->getMapper('/Videogallery/Storage/MySQL/FileMapper');
 
         $fileManager = new FileManager($fileMapper);
+        $categoryManager = new CategoryManager($categoryMapper);
 
         return array(
-            'fileManager' => $fileManager
+            'fileManager' => $fileManager,
+            'categoryManager' => $categoryManager
         );
     }
 }
