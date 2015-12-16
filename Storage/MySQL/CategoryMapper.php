@@ -13,31 +13,26 @@ namespace Videogallery\Storage\MySQL;
 
 use Cms\Storage\MySQL\AbstractMapper;
 use Videogallery\Storage\CategoryMapperInterface;
-use stdclass;
 
 final class CategoryMapper extends AbstractMapper implements CategoryMapperInterface
 {
     /**
      * {@inheritDoc}
      */
-    protected $table = '';
+    public static function getTableName()
+    {
+        return '';
+    }
 
     /**
      * Fetches a record by its associated id
      * 
-     * @paran string $id
+     * @param string $id
      * @return array
      */
     public function fetchById($id)
     {
-        $query = sprintf('SELECT * FROM `%s` WHERE `id` =:id', $this->table);
-        
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute(array(
-            ':id' => $id
-        ));
-        
-        return $stmt->fetch();
+        return $this->findByPk($id);
     }
     
     /**
@@ -48,48 +43,28 @@ final class CategoryMapper extends AbstractMapper implements CategoryMapperInter
      */
     public function deleteById($id)
     {
-        $query = sprintf('DELETE FROM `%s` WHERE `id` =:id', $this->table);
-        
-        $stmt = $this->pdo->prepare($query);
-        return $stmt->execute(array(
-            ':id' => $id
-        ));
+        return $this->deleteByPk($id);
     }
 
     /**
-     * Inserts a record
+     * Add a category
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return boolean
      */
-    public function insert(stdclass $container)
+    public function insert(array $input)
     {
-        $query = sprintf('INSERT INTO `%s` (
-            
-        ) VALUES (
-            
-        )', $this->table);
-        
-        $stmt = $this->pdo->prepare($query);
-        return $stmt->execute(array(
-            
-        ));
+        return $this->persist($this->getWithLang($input));
     }
 
     /**
-     * Updates a record
+     * Updates a category
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return boolean
      */
-    public function update(stdclass $container)
+    public function update(array $input)
     {
-        $query = sprintf('UPDATE `%s`', $this->table);
-        
-        $stmt = $this->pdo->prepare($query);
-        return $stmt->execute(array(
-            
-        ));
+        return $this->persist($input);
     }
 }
-
