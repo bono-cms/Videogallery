@@ -17,29 +17,25 @@ use stdclass;
 final class Browser extends AbstractController
 {
     /**
-     * Shows a table
+     * Shows a grid
      * 
      * @param integer $page
      * @return string
      */
     public function indexAction($page = 1)
     {
-        // Grab a module
-        $module = $this->moduleManager->getModule('Videogallery');
-        
-        // Grab a service
-        $fileManager = $module->getService('fileManager');
-        
+        $fileManager = $this->getModuleService('fileManager');
+
+        $files = $fileManager->fetchAllByPage($page, $this->getSharedPerPageCount(), false);
+
+        // Tweak pagination
+        $paginator = $fileManager->getPaginator();
+        $paginator->setUrl('/admin/module/videogallery/page/(:var)');
+
         return $this->view->render('browser', array(
-            'breadcrumbs' => array(
-                '#' => 'Videogallery'
-            ),
-            
-            'files' => $fileManager->fetchAllByPage($page, 10, false),
-            
-            // Pagination stuff
-            'paginator' => $fileManager->getPaginator(),
-            'url'       => '',
+            'title' => 'Videogallery',
+            'files' => $files,
+            'paginator' => $fileManager->getPaginator()
         ));
     }
 
