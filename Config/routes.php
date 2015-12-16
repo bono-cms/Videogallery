@@ -19,6 +19,14 @@ return array(
         'controller' => 'Admin:Browser@indexAction'
     ),
     
+    '/admin/module/videogallery/category/(:var)' => array(
+        'controller' => 'Admin:Browser@categoryAction'
+    ),
+
+    '/admin/module/videogallery/category/(:var)/page/(:var)' => array(
+        'controller' => 'Admin:Browser@categoryAction'
+    ),
+    
     '/admin/module/videogallery/file/add' => array(
         'controller' => 'Admin:File:Add@indexAction'
     ),
