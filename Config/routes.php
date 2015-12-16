@@ -27,6 +27,14 @@ return array(
         'controller' => 'Admin:Browser@categoryAction'
     ),
     
+    '/admin/module/videogallery/category/add' => array(
+        'controller' => 'Admin:Category:Add@indexAction'
+    ),
+
+    '/admin/module/videogallery/category/add.ajax' => array(
+        'controller' => 'Admin:Category:Add@addAction'
+    ),
+    
     '/admin/module/videogallery/file/add' => array(
         'controller' => 'Admin:File:Add@indexAction'
     ),
