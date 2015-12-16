@@ -64,7 +64,7 @@ final class Browser extends AbstractController
     }
 
     /**
-     * Deletes a file by its associated id from the table
+     * Deletes a video file by its associated id
      * 
      * @return string
      */
@@ -72,12 +72,12 @@ final class Browser extends AbstractController
     {
         if ($this->request->hasPost('id') && $this->request->isAjax()) {
             $id = $this->request->getPost('id');
+
             // Grab a service
-            $fileManager = $this->moduleManager->getModule('Videogallery')->getService('fileManager');
+            $fileManager = $this->getModuleService('fileManager');
             $fileManager->deleteById($id);
-            
+
             $this->flashMessenger->set('success', 'File has been removed successfully');
-            
             return '1';
         }
     }
