@@ -24,6 +24,8 @@ final class Browser extends AbstractController
      */
     public function indexAction($page = 1)
     {
+        $this->loadBreadcrumbs();
+
         $fileManager = $this->getModuleService('fileManager');
 
         $files = $fileManager->fetchAllByPage($page, $this->getSharedPerPageCount(), false);
@@ -48,6 +50,8 @@ final class Browser extends AbstractController
      */
     public function categoryAction($id, $page = 1)
     {
+        $this->loadBreadcrumbs();
+
         $fileManager = $this->getModuleService('fileManager');
 
         $files = $fileManager->fetchAllByCategoryIdAndPage($id, $page, $this->getSharedPerPageCount());
@@ -111,5 +115,16 @@ final class Browser extends AbstractController
         if ($this->request->isPost() && $this->request->isAjax()) {
             
         }
+    }
+    
+    /**
+     * Load breadcrumbs in view
+     * 
+     * @return void
+     */
+    private function loadBreadcrumbs()
+    {
+        $this->view->getBreadcrumbBag()
+                   ->addOne('Videogallery');
     }
 }
