@@ -40,24 +40,26 @@ final class Browser extends AbstractController
     }
 
     /**
-     * Filters by category and pagination
+     * Shows a grid filtered by category id
      * 
-     * @param string $id
-     * @param integer $page
+     * @param string $id Category id
+     * @param integer $page Current page number
      * @return string
      */
     public function categoryAction($id, $page = 1)
     {
-        // Grab a service
-        $fileManager = $this->moduleManager->getModule('Videogallery')->getService('fileManager');
-        $records = $fileManager->fetchAllByCategoryIdAndPage($id, $page, 10);
-        
-        return $this->view->render('/layout/videogallery/browser.phtml', array(
-            
-            'records' => $records,
-            
-            'url' => '',
+        $fileManager = $this->getModuleService('fileManager');
+
+        $files = $fileManager->fetchAllByCategoryIdAndPage($id, $page, $this->getSharedPerPageCount());
+
+        // Tweak pagination
+        $paginator = $this->getPaginator();
+        $paginator->setUrl(sprintf('/admin/module/videogallery/category/%s/page/(:var)', $id));
+
+        return $this->view->render('browser', array(
+            'files' => $files,
             'paginator' => $fileManager->getPaginator(),
+            'title' => 'Videogallery'
         ));
     }
 
