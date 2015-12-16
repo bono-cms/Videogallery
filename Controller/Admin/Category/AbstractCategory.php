@@ -11,8 +11,7 @@
 
 namespace Videogallery\Controller\Admin\Category;
 
-use Admin\Controller\Admin\AbstractController;
-use stdclass;
+use Cms\Controller\Admin\AbstractController;
 
 abstract class AbstractCategory extends AbstractController
 {
@@ -32,44 +31,5 @@ abstract class AbstractCategory extends AbstractController
      */
     final protected function getValidator()
     {
-    }
-
-    /**
-     * Returns request container
-     * 
-     * @return \stdclass
-     */
-    final protected function getContainer()
-    {
-        $container = new stdclass();
-        
-        return $container;
-    }
-
-    /**
-     * Returns template path
-     * 
-     * @return string
-     */
-    final protected function getTemplatePath()
-    {
-        return '/category.form.phtml';
-    }
-
-    /**
-     * Returns shared variables
-     * 
-     * @param array $overrides
-     * @return array
-     */
-    final protected function getSharedVars(array $overrides)
-    {
-        $vars = array(
-            'breadcrumbs' => array(
-                'Videogallery:Admin:Browser@indexAction' => 'Videogallery'
-            )
-        );
-        
-        return array_replace_recursive($vars, $overrides);
     }
 }
