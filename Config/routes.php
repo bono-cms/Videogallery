@@ -19,7 +19,7 @@ return array(
         'controller' => 'Admin:Browser@indexAction'
     ),
     
-    '/admin/module/videogallery/category/(:var)' => array(
+    '/admin/module/videogallery/category/view/(:var)' => array(
         'controller' => 'Admin:Browser@categoryAction'
     ),
 
