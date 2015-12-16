@@ -83,22 +83,20 @@ final class Browser extends AbstractController
     }
 
     /**
-     * Delete selected records
+     * Delete selected videos by their associated ids
      * 
      * @return string
      */
     public function deleteSelectedAction()
     {
         if ($this->request->hasPost('toDelete') && $this->request->isAjax()) {
-            
             $ids = $this->request->getPost('toDelete');
-            
+
             // Grab a service
-            $fileManager = $this->moduleManager->getModule('Videogallery')->getService('fileManager');
+            $fileManager = $this->getModuleService('fileManager');
             $fileManager->deleteByIds($ids);
-            
+
             $this->flashMessenger->set('success', 'Selected files have been removed successfully');
-            
             return '1';
         }
     }
