@@ -33,5 +33,13 @@ return array(
     
     '/admin/module/videogallery/file/add.ajax' => array(
         'controller'=> 'Admin:File:Add@addAction'
+    ),
+    
+    '/admin/module/videogallery/file/edit/(:var)' => array(
+        'controller' => 'Admin:File:Edit@indexAction'
+    ),
+    
+    '/admin/module/videogallery/file/edit.ajax' => array(
+        'controller' => 'Admin:File:Edit@updateAction'
     )
 );
