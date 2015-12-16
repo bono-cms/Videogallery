@@ -12,7 +12,7 @@
 namespace Videogallery\Service;
 
 use Cms\Service\AbstractManager;
-use Cms\Storage\CategoryMapperInterface;
+use Videogallery\Storage\CategoryMapperInterface;
 use stdclass;
 
 final class CategoryManager extends AbstractManager

@@ -12,9 +12,10 @@
 namespace Videogallery\Storage\MySQL;
 
 use Cms\Storage\MySQL\AbstractMapper;
+use Videogallery\Storage\CategoryMapperInterface;
 use stdclass;
 
-final class CategoryMapper extends AbstractMapper
+final class CategoryMapper extends AbstractMapper implements CategoryMapperInterface
 {
     /**
      * {@inheritDoc}
