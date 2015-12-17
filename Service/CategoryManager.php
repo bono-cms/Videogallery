@@ -13,21 +13,20 @@ namespace Videogallery\Service;
 
 use Cms\Service\AbstractManager;
 use Videogallery\Storage\CategoryMapperInterface;
-use stdclass;
 
 final class CategoryManager extends AbstractManager
 {
     /**
-     * Category mapper
+     * Any compliant category mapper
      * 
-     * @var CategoryMapperInterface
+     * @var \Videogallery\Storage\CategoryMapperInterface
      */
     private $categoryMapper;
 
     /**
      * State initialization
      * 
-     * @param CategoryMapperInterface $categoryMapper
+     * @param \Videogallery\Storage\CategoryMapperInterface $categoryMapper
      * @return void
      */
     public function __construct(CategoryMapperInterface $categoryMapper)
@@ -38,7 +37,7 @@ final class CategoryManager extends AbstractManager
     /**
      * Returns prepared paginator instance
      * 
-     * @return object
+     * @return \Krystal\Paginate\Paginator
      */
     public function getPaginator()
     {
@@ -46,7 +45,7 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Fetch all records by page
+     * Fetches all category entities filtered by pagination
      * 
      * @param integer $page
      * @param integer $itemsPerPage
@@ -58,7 +57,7 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Fetch all published by page
+     * Fetches all published category entities filtered by pagination
      * 
      * @param integer $page
      * @param integer $itemsPerPage
@@ -70,7 +69,7 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Fetches category info by its associated id
+     * Fetches category's entity by its associated id
      * 
      * @param string $id
      * @return array
@@ -81,7 +80,7 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Deletes a record 
+     * Deletes a category
      * 
      * @param string $id
      * @return boolean
@@ -92,24 +91,24 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Inserts a record
+     * Adds a category
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return boolean
      */
-    public function add(stdclass $container)
+    public function add(array $input)
     {
-        return $this->categoryMapper->insert($container);
+        return $this->categoryMapper->insert($input);
     }
 
     /**
-     * Updates a record
+     * Updates a category
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return boolean
      */
-    public function update(stdclass $container)
+    public function update(array $input)
     {
-        return $this->categoryMapper->update($container);
+        return $this->categoryMapper->update($input);
     }
 }
