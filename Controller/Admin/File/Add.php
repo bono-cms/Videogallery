@@ -11,6 +11,8 @@
 
 namespace Videogallery\Controller\Admin\File;
 
+use Krystal\Stdlib\VirtualEntity;
+
 final class Add extends AbstractFile
 {
     /**
@@ -20,16 +22,18 @@ final class Add extends AbstractFile
      */
     public function indexAction()
     {
-        $this->loadSharedPlugins();
         $title = 'Add a video';
-        
-        return $this->viewModel->render($this->getTemplatePath(), $this->getSharedVars(array(
-            'breadcrumbs' => array(
-                '#' => $title
-            ),
-            
-            'title' => $title
-        )));
+
+        $this->loadSharedPlugins();
+        $this->loadBreadcrumbs($title);
+
+        $video = new VirtualEntity();
+        $video->setPublished(true);
+
+        return $this->view->render('file.form', array(
+            'title' => $title,
+            'video' => $video
+        ));
     }
 
     /**

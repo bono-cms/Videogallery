@@ -11,6 +11,8 @@
 
 namespace Videogallery\Controller\Admin\Category;
 
+use Krystal\Stdlib\VirtualEntity;
+
 final class Add extends AbstractCategory
 {
     /**
@@ -20,16 +22,15 @@ final class Add extends AbstractCategory
      */
     public function indexAction()
     {
-        $this->loadSharedPlugins();
         $title = 'Add a category';
-        
-        return $this->viewModel->render($this->getTemplatePath(), $this->getSharedVars(array(
-            'breadcrumbs' => array(
-                '#' => $title,
-            ),
-            
+
+        $this->loadSharedPlugins();
+        $this->loadBreadcrumbs($title);
+
+        return $this->view->render('category.form', array(
             'title' => $title
-        )));
+            'category' => new VirtualEntity()
+        ));
     }
 
     /**
