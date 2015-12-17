@@ -12,7 +12,6 @@
 namespace Videogallery\Controller\Admin;
 
 use Cms\Controller\Admin\AbstractController;
-use stdclass;
 
 final class Browser extends AbstractController
 {
