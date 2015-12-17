@@ -34,7 +34,7 @@ final class CategoryMapper extends AbstractMapper implements CategoryMapperInter
     {
         return $this->findByPk($id);
     }
-    
+
     /**
      * Deletes a record by its associated id
      * 
