@@ -45,6 +45,16 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
+     * Fetches all category entities
+     * 
+     * @return array
+     */
+    public function fetchAll()
+    {
+        return $this->prepareResults($this->categoryMapper->fetchAll());
+    }
+
+    /**
      * Fetches all category entities filtered by pagination
      * 
      * @param integer $page
