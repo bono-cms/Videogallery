@@ -21,23 +21,19 @@ final class Edit extends AbstractFile
      */
     public function indexAction($id)
     {
-        $file = $this->getFileManager()->fetchById($id);
-        
-        if ($file !== false) {
-            
-            $this->loadSharedPlugins();
+        $video = $this->moduleService('fileManager')->fetchById($id);
+
+        if ($video !== false) {
             $title = 'Edit the file';
-            
-            return $this->viewModel->render($this->getTemplatePath(), $this->getSharedVars(array(
-                'breadcrumbs' => array(
-                    '#' => $title
-                ).
-                
-                'title' => $title
-            )));
-            
+
+            $this->loadSharedPlugins();
+            $this->loadBreadcrumbs($title);
+
+            return $this->view->render('file.form', array(
+                'title' => $title,
+                'video' => $video
+            ));
         } else {
-            
             return false;
         }
     }

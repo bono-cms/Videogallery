@@ -22,23 +22,19 @@ final class Edit extends AbstractCategory
     public function indexAction($id)
     {
         $category = $this->getCategoryManager()->fetchById($id);
-        
+
         if ($category !== false) {
-            
-            $this->loadSharedPlugins();
             $title = 'Edit the category';
-            
-            return $this->viewModel->render($this->getTemplatePath(), $this->getSharedVars(array(
-                'breadcrumbs' => array(
-                    '#' => $title
-                ),
-                
+
+            $this->loadSharedPlugins();
+            $this->loadBreadcrumbs($title);
+
+            return $this->view->render('category.form', array(
                 'title' => $title,
                 'category' => $category
-            )));
-            
+            ));
+
         } else {
-            
             return false;
         }
     }
