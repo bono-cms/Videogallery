@@ -16,6 +16,19 @@ use Admin\Controller\Admin\AbstractController;
 abstract class AbstractFile extends AbstractController
 {
     /**
+     * Load breadcrumbs
+     * 
+     * @param string $title Title of the latest one
+     * @return void
+     */
+    final protected function loadBreadcrumbs($title)
+    {
+        $this->view->getBreadcrumbBag()
+                   ->addOne('Videogallery', 'Videogallery:Admin:Browser@indexAction')
+                   ->addOne($title);
+    }
+
+    /**
      * Load shared view plugins
      * 
      * @return void
