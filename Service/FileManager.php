@@ -13,21 +13,21 @@ namespace Videogallery\Service;
 
 use Cms\Service\AbstractManager;
 use Videogallery\Storage\FileMapperInterface;
-use stdclass;
+use Krystal\Stdlib\VirtualEntity;
 
 final class FileManager extends AbstractManager implements FileManagerInterface
 {
     /**
-     * A mapper which implements this interface
+     * Any compliant file mapper
      * 
-     * @var FileMapperInterface
+     * @var \Videogallery\Storage\FileMapperInterface
      */
     private $fileMapper;
 
     /**
      * State initialization
      * 
-     * @param FileMapperInterface $fileMapper
+     * @param \Videogallery\Storage\FileMapperInterface $fileMapper
      * @return void
      */
     public function __construct(FileMapperInterface $fileMapper)
@@ -38,31 +38,27 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     /**
      * {@inheritDoc}
      */
-    protected function toObject(array $file)
+    protected function toEntity(array $file)
     {
-        $container = new stdclass();
-        $container->id = $file['id'];
-        
-        return $container;
+        $entity = new VirtualEntity();
+        return $entity;
     }
 
     /**
-     * Prepare container
+     * Prepares an input
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return void
      */
-    private function prepareContainer(stdclass $container)
+    private function prepareInput(array $input)
     {
-        if (empty($container->slug)) {
-            $container->slug = $container->title;
-        }
+        return $input;
     }
 
     /**
      * Returns paginator instance
      * 
-     * @return Paginator
+     * @return \Krystal\Paginate\Paginator
      */
     public function getPaginator()
     {
@@ -80,25 +76,25 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     }
 
     /**
-     * Adds a record
+     * Adds a video file
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return boolean
      */
-    public function add(stdclass $container)
+    public function add(array $input)
     {
-        return $this->fileMapper->insert($container);
+        return $this->fileMapper->insert($input);
     }
 
     /**
-     * Updates a record
+     * Updates a video file
      * 
-     * @param stdclass $container
+     * @param array $input Raw input data
      * @return boolean
      */
-    public function update(stdclass $container)
+    public function update(array $input)
     {
-        return $this->fileMapper->update($container);
+        return $this->fileMapper->update($input);
     }
 
     /**
