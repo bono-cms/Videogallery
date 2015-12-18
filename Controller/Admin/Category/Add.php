@@ -28,7 +28,7 @@ final class Add extends AbstractCategory
         $this->loadBreadcrumbs($title);
 
         return $this->view->render('category.form', array(
-            'title' => $title
+            'title' => $title,
             'category' => new VirtualEntity()
         ));
     }
