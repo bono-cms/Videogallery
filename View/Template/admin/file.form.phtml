@@ -1,11 +1,16 @@
+<?php
+
+use Krystal\Form\Element;
+
+?>
+
 <form>
     <div class="well clearfix">
-        
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Title'); ?></label>
             <div class="col-lg-10">
                 <div class="input-group">
-                    <input type="text" name="title" class="form-control" placeholder="<?php $this->show('Page title'); ?>" />
+                    <?php echo Element::text('video[title]', $video->getTitle(), array('class' => 'form-control')); ?>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                 </div>
             </div>
@@ -14,21 +19,21 @@
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Image cover'); ?></label>
             <div class="col-lg-10">
-                <input type="file" name="imageFile" />
+                <?php echo Element::file('imageFile'); ?>
             </div>
         </div>
         
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Video file'); ?></label>
             <div class="col-lg-10">
-                <input type="file" name="videoFile" />
+                <?php echo Element::file('videoFile'); ?>
             </div>
         </div>
         
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
             <div class="col-lg-10">
-                <textarea name="description" rows="7" class="form-control"></textarea>
+                <?php echo Element::textarea('description', $video->getDescription()); ?>
             </div>
         </div>
         
@@ -36,15 +41,14 @@
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Order'); ?></label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" name="order" placeholder="<?php $this->show('Order of the video file to be displayed in category'); ?>" />
+                    <?php echo Element::text('order', $video->getOrder(), array('class' => 'form-control', 'placeholder' => 'Order of the video file to be displayed in category')); ?>
                 </div>
             </div>
             
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Enable SEO'); ?></label>
                 <div class="col-lg-10">
-                    <input type="hidden" name="seoEnabled" value="0" />
-                    <input type="checkbox" name="seoEnabled" value="1" checked="checked" class="form-control" />
+                    <?php echo Element::checkbox('seo', $video->getSeo(), array('class' => 'form-control')); ?>
                 </div>
             </div>
             
@@ -52,7 +56,7 @@
                 <label class="col-lg-2 control-label"><?php $this->show('URL slug'); ?></label>
                 <div class="col-lg-10">
                     <div class="input-group">
-                        <input type="text" name="slug" class="form-control" placeholder="<?php $this->show('URL slug for this page. By default is taken from a title'); ?>" />
+                        <?php echo Element::text('slug', $video->getSlug(), array('class' => 'form-control', 'placeholder' => 'URL slug for this page. By default is taken from a title')); ?>
                         <span class="input-group-addon">
                             <a href="#" id="slug-btn">
                                 <i class="glyphicon glyphicon-refresh" data-toggle="tooltip" title="<?php $this->show('Refresh the slug'); ?>"></i>
@@ -66,7 +70,7 @@
                 <label class="col-lg-2 control-label"><?php $this->show('Keywords'); ?></label>
                 <div class="col-lg-10">
                     <div class="input-group">
-                        <input type="text" name="keywords" class="form-control" placeholder="<?php $this->show('Keywords used for search engines'); ?>" />
+                        <?php echo Element::text('keywords', $video->getKeywords(), array('class' => 'form-control', 'placeholder' => 'Keywords used for search engines')); ?>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
                     </div>
                 </div>
@@ -75,22 +79,25 @@
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
                 <div class="col-lg-10">
-                    <textarea name="metaDescription" class="form-control" placeholder="<?php $this->show('Meta description for search engines'); ?>"></textarea>
+                    <?php echo Element::textarea('metaDescription', $video->getMetaDescription(), array('class' => 'form-control', 'placeholder' => 'Meta description for search engines')); ?>
                 </div>
             </div>
         </div>
     </div>
     
-    <?php if (isset($editing)): ?>
+    <?php if (!$video->getId()): ?>
     
     <button data-button="add" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add'); ?></button>
-    <button data-toggle="add-create" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add & Create new'); ?></button>
+    <button data-toggle="add-create" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add & Upload new'); ?></button>
     
     <?php else: ?>
+    
+    <button data-button="save" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save'); ?></button>
+    <button data-toggle="save-create" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save & Upload new'); ?></button>
     
     <?php endif; ?>
     
     <button data-button="options" class="btn btn-primary"><i class="glyphicon glyphicon-open"></i> <?php $this->show('More options'); ?></button>
-    <button data-button="cancel" class="btn btn-default"><i class="glyphicon glyphicon-floppy-remove"></i> <?php $this->show('Cancel'); ?></button>
+    <button data-button="cancel" data-url="<?php echo $this->url('Videogallery:Admin:Browser@indexAction'); ?>" class="btn btn-default"><i class="glyphicon glyphicon-floppy-remove"></i> <?php $this->show('Cancel'); ?></button>
     
 </form>
