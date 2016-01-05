@@ -72,4 +72,15 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
     {
         return $this->deleteByPk($id);
     }
+
+    /**
+     * Adds a video record
+     * 
+     * @param array $data Data to be inserted
+     * @return boolean
+     */
+    public function insert(array $data)
+    {
+        return $this->persist($this->getWithLang($data));
+    }
 }
