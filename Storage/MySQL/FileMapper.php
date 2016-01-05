@@ -61,4 +61,15 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
         return $db->paginate($page, $itemsPerPage)
                   ->queryAll();
     }
+
+    /**
+     * Removes a video record by its associated id
+     * 
+     * @param string $id
+     * @return boolean
+     */
+    public function deleteById($id)
+    {
+        return $this->deleteByPk($id);
+    }
 }
