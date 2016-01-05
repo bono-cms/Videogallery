@@ -48,7 +48,7 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
     {
         $db = $this->db->select('*')
                        ->from(self::getTableName())
-                       ->whereEquals('langId', $this->getLangId());
+                       ->whereEquals('lang_id', $this->getLangId());
 
         if ($published === true) {
             $db->andWhereEquals('published', '1')
