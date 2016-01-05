@@ -11,9 +11,47 @@
 
 namespace Videogallery\Storage;
 
-use stdclass;
-
 interface FileMapperInterface
 {
-    
+    /**
+     * Fetches a record by its associated id
+     * 
+     * @param string $id
+     * @return array
+     */
+    public function fetchById($id);
+
+    /**
+     * Fetch all records filtered by pagination
+     * 
+     * @param integer $page
+     * @param integer $itemsPerPage
+     * @param boolean $published Whether to fetch only published records
+     * @return array
+     */
+    public function fetchAllByPage($page, $itemsPerPage, $published);
+
+    /**
+     * Removes a video record by its associated id
+     * 
+     * @param string $id
+     * @return boolean
+     */
+    public function deleteById($id);
+
+    /**
+     * Adds a video record
+     * 
+     * @param array $data Data to be inserted
+     * @return boolean
+     */
+    public function insert(array $data);
+
+    /**
+     * Updates a video record
+     * 
+     * @param array $data Data to be updated
+     * @return boolean
+     */
+    public function update(array $data);
 }
