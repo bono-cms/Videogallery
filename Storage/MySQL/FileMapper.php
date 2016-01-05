@@ -13,6 +13,7 @@ namespace Videogallery\Storage\MySQL;
 
 use Cms\Storage\MySQL\AbstractMapper;
 use Videogallery\Storage\FileMapperInterface;
+use Krystal\Db\Sql\RawSqlFragment;
 
 final class FileMapper extends AbstractMapper implements FileMapperInterface
 {
@@ -50,12 +51,14 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
                        ->whereEquals('langId', $this->getLangId());
 
         if ($published === true) {
-            $db->andWhereEquals('published', '1');
+            $db->andWhereEquals('published', '1')
+               ->orderBy(new RawSqlFragment('`order`, CASE WHEN `order` = 0 THEN `id` END DESC'));
+        } else {
+            $db->orderBy('id')
+               ->desc();
         }
 
-        return $db->orderBy('id')
-                  ->desc()
-                  ->paginate($page, $itemsPerPage)
+        return $db->paginate($page, $itemsPerPage)
                   ->queryAll();
     }
 }
