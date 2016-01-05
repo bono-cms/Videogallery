@@ -83,4 +83,15 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
     {
         return $this->persist($this->getWithLang($data));
     }
+
+    /**
+     * Updates a video record
+     * 
+     * @param array $data Data to be updated
+     * @return boolean
+     */
+    public function update(array $data)
+    {
+        return $this->persist($data);
+    }
 }
