@@ -26,7 +26,6 @@ final class Browser extends AbstractController
         $this->loadBreadcrumbs();
 
         $fileManager = $this->getModuleService('fileManager');
-
         $files = $fileManager->fetchAllByPage($page, $this->getSharedPerPageCount(), false);
 
         // Tweak pagination
@@ -52,7 +51,6 @@ final class Browser extends AbstractController
         $this->loadBreadcrumbs();
 
         $fileManager = $this->getModuleService('fileManager');
-
         $files = $fileManager->fetchAllByCategoryIdAndPage($id, $page, $this->getSharedPerPageCount());
 
         // Tweak pagination
