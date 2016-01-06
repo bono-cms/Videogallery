@@ -12,9 +12,29 @@
 namespace Videogallery\Controller\Admin\File;
 
 use Cms\Controller\Admin\AbstractController;
+use Krystal\Validate\Pattern;
 
 abstract class AbstractFile extends AbstractController
 {
+    /**
+     * Returns prepared validator
+     * 
+     * @param array $input Raw input data to be validated
+     * @return \Krystal\Validate\ValidatorChain
+     */
+    final protected function getValidator(array $input)
+    {
+        return $this->validatorFactory->build(array(
+            'input' => array(
+                'source' => $input,
+                'definition' => array(
+                    'title' => new Pattern\Name(),
+                    'description' => new Pattern\Description()
+                )
+            )
+        );
+    }
+
     /**
      * Load breadcrumbs
      * 
