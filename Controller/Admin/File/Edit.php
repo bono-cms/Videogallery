@@ -45,23 +45,17 @@ final class Edit extends AbstractFile
      */
     public function updateAction()
     {
-        if ($this->request->isPost() && $this->request->isAjax()) {
-            
-            $formValidator = $this->getValidator();
-            
-            if (1) {
-                
-                $fileManager = $this->getFileManager();
-                $fileManager->update($this->getContainer());
-                
-                $this->flashMessenger->set('success', 'A file has been updated successfully');
-                
-                return '1';
-                
-            } else {
-                
-                return $formValidator->getErrors();
-            }
+        $input = $this->request->getPost('file');
+        $formValidator = $this->getValidator($input);
+
+        if ($formValidator->isValid()) {
+            $fileManager = $this->getFileManager();
+            $fileManager->update($input);
+
+            $this->flashMessenger->set('success', 'A file has been updated successfully');
+            return '1';
+        } else {
+            return $formValidator->getErrors();
         }
     }
 }
