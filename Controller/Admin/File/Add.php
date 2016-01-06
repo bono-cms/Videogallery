@@ -43,21 +43,19 @@ final class Add extends AbstractFile
      */
     public function addAction()
     {
-        if ($this->request->isPost() && $this->request->isAjax()) {
-            
-            if (1) {
-                
-                $fileManager = $this->getFileManager();
-                $fileManager->add($this->getContainer());
-                
-                $this->flashMessenger->set('success', 'A video has been added successfully');
-                
-                return $fileManager->getLastId();
-            
-            } else {
-                
-                return $formValidator->getErrors();
-            }
+        $input = $this->request->getPost('file');
+        $formValidator = $this->getValidator($input);
+
+        if ($formValidator->isValid()) {
+
+            $fileManager = $this->getFileManager();
+            $fileManager->add($input);
+
+            $this->flashMessenger->set('success', 'A video has been added successfully');
+            return $fileManager->getLastId();
+
+        } else {
+            return $formValidator->getErrors();
         }
     }
 }
