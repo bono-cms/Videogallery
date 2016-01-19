@@ -32,7 +32,7 @@ abstract class AbstractFile extends AbstractController
                     'description' => new Pattern\Description()
                 )
             )
-        );
+        ));
     }
 
     /**
