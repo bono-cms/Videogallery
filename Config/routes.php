@@ -34,6 +34,14 @@ return array(
     '/admin/module/videogallery/category/add.ajax' => array(
         'controller' => 'Admin:Category:Add@addAction'
     ),
+
+    '/admin/module/videogallery/category/edit/(:var)' => array(
+        'controller' => 'Admin:Category:Edit@indexAction'
+    ),
+
+    '/admin/module/videogallery/category/edit.ajax' => array(
+        'controller' => 'Admin:Category:Edit@updateAction'
+    ),
     
     '/admin/module/videogallery/file/add' => array(
         'controller' => 'Admin:File:Add@indexAction'
