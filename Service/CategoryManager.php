@@ -35,16 +35,6 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Returns prepared paginator instance
-     * 
-     * @return \Krystal\Paginate\Paginator
-     */
-    public function getPaginator()
-    {
-        return $this->categoryMapper->getPaginator();
-    }
-
-    /**
      * Fetches all category entities
      * 
      * @return array
