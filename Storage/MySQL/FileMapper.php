@@ -37,18 +37,23 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
     }
 
     /**
-     * Fetch all records filtered by pagination
+     * Fetches all records filtered by pagination
      * 
      * @param integer $page
      * @param integer $itemsPerPage
      * @param boolean $published Whether to fetch only published records
+     * @param string $categoryId Optionally can be filtered by category id
      * @return array
      */
-    public function fetchAllByPage($page, $itemsPerPage, $published)
+    public function fetchAllByPage($page, $itemsPerPage, $published, $categoryId = null)
     {
         $db = $this->db->select('*')
                        ->from(self::getTableName())
                        ->whereEquals('lang_id', $this->getLangId());
+
+        if ($categoryId !== null) {
+            $db->andWhereEquals('category_id', $categoryId);
+        }
 
         if ($published === true) {
             $db->andWhereEquals('published', '1')
