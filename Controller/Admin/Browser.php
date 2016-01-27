@@ -35,7 +35,8 @@ final class Browser extends AbstractController
         return $this->view->render('browser', array(
             'title' => 'Videogallery',
             'files' => $files,
-            'paginator' => $fileManager->getPaginator()
+            'paginator' => $fileManager->getPaginator(),
+            'categories' => $this->getModuleService('categoryManager')->fetchAllAsTree()
         ));
     }
 
@@ -60,7 +61,9 @@ final class Browser extends AbstractController
         return $this->view->render('browser', array(
             'files' => $files,
             'paginator' => $fileManager->getPaginator(),
-            'title' => 'Videogallery'
+            'title' => 'Videogallery',
+            'categories' => $this->getModuleService('categoryManager')->fetchAllAsTree(),
+            'categoryId' => $id
         ));
     }
 
