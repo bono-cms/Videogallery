@@ -14,7 +14,7 @@ namespace Videogallery\Service;
 use Cms\Service\AbstractManager;
 use Videogallery\Storage\CategoryMapperInterface;
 
-final class CategoryManager extends AbstractManager
+final class CategoryManager extends AbstractManager implements CategoryManagerInterface
 {
     /**
      * Any compliant category mapper
