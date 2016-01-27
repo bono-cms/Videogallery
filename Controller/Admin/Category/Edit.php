@@ -21,7 +21,7 @@ final class Edit extends AbstractCategory
      */
     public function indexAction($id)
     {
-        $category = $this->getCategoryManager()->fetchById($id);
+        $category = $this->getModuleService('categoryManager')->fetchById($id);
 
         if ($category !== false) {
             $title = 'Edit the category';
