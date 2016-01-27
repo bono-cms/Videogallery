@@ -31,7 +31,8 @@ final class Edit extends AbstractCategory
 
             return $this->view->render('category.form', array(
                 'title' => $title,
-                'category' => $category
+                'category' => $category,
+                'categories' => $this->getModuleService('categoryManager')->fetchAllAsTreeWithPromt('— None —')
             ));
 
         } else {
