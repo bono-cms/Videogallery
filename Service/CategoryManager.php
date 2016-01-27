@@ -13,6 +13,7 @@ namespace Videogallery\Service;
 
 use Cms\Service\AbstractManager;
 use Videogallery\Storage\CategoryMapperInterface;
+use Krystal\Stdlib\VirtualEntity;
 
 final class CategoryManager extends AbstractManager implements CategoryManagerInterface
 {
@@ -32,6 +33,19 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
     public function __construct(CategoryMapperInterface $categoryMapper)
     {
         $this->categoryMapper = $categoryMapper;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function toEntity(array $category)
+    {
+        $entity = new VirtualEntity();
+        $entity->setId((int) $category['id'])
+               ->setTitle($category['title'])
+               ->setDescription($category['description']);
+
+        return $entity;
     }
 
     /**
