@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS `bono_module_videogallery_categories`;
 CREATE TABLE `bono_module_videogallery_categories` (
 	`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`lang_id` INT NOT NULL,
-	`category_id` INT NOT NULL,
+	`parent_id` INT NOT NULL,
 	`title` varchar(254) NOT NULL,
 	`description` TEXT NOT NULL
     
