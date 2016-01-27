@@ -14,6 +14,21 @@ namespace Videogallery\Service;
 interface CategoryManagerInterface
 {
     /**
+     * Returns a tree pre-pending prompting message
+     * 
+     * @param string $text
+     * @return array
+     */
+    public function fetchAllAsTreeWithPromt($text);
+
+    /**
+     * Fetches all categories as a tree
+     * 
+     * @return array
+     */
+    public function fetchAllAsTree();
+
+    /**
      * Returns last category id
      * 
      * @return integer

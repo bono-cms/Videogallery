@@ -14,6 +14,9 @@ namespace Videogallery\Service;
 use Cms\Service\AbstractManager;
 use Videogallery\Storage\CategoryMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
+use Krystal\Stdlib\ArrayUtils;
+use Krystal\Tree\AdjacencyList\TreeBuilder;
+use Krystal\Tree\AdjacencyList\Render\PhpArray;
 
 final class CategoryManager extends AbstractManager implements CategoryManagerInterface
 {
@@ -42,10 +45,36 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
     {
         $entity = new VirtualEntity();
         $entity->setId((int) $category['id'])
+               ->setParentId((int) $category['parent_id'])
                ->setTitle($category['title'])
                ->setDescription($category['description']);
 
         return $entity;
+    }
+
+    /**
+     * Returns a tree pre-pending prompting message
+     * 
+     * @param string $text
+     * @return array
+     */
+    public function fetchAllAsTreeWithPromt($text)
+    {
+        $tree = $this->fetchAllAsTree();
+        ArrayUtils::assocPrepend($tree, null, $text);
+
+        return $tree;
+    }
+
+    /**
+     * Fetches all categories as a tree
+     * 
+     * @return array
+     */
+    public function fetchAllAsTree()
+    {
+        $treeBuilder = new TreeBuilder($this->categoryMapper->fetchAll());
+        return $treeBuilder->render(new PhpArray('title'));
     }
 
     /**
