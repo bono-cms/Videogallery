@@ -55,30 +55,6 @@ final class CategoryManager extends AbstractManager
     }
 
     /**
-     * Fetches all category entities filtered by pagination
-     * 
-     * @param integer $page
-     * @param integer $itemsPerPage
-     * @return array
-     */
-    public function fetchAllByPage($page, $itemsPerPage)
-    {
-        return $this->prepareResults($this->categoryMapper->fetchAllByPage($page, $itemsPerPage));
-    }
-
-    /**
-     * Fetches all published category entities filtered by pagination
-     * 
-     * @param integer $page
-     * @param integer $itemsPerPage
-     * @return array
-     */
-    public function fetchAllPublishedByPage($page, $itemsPerPage)
-    {
-        return $this->prepareResults($this->categoryMapper->fetchAllPublishedByPage($page, $itemsPerPage));
-    }
-
-    /**
      * Fetches category's entity by its associated id
      * 
      * @param string $id
