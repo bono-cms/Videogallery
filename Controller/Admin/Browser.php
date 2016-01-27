@@ -52,10 +52,10 @@ final class Browser extends AbstractController
         $this->loadBreadcrumbs();
 
         $fileManager = $this->getModuleService('fileManager');
-        $files = $fileManager->fetchAllByCategoryIdAndPage($id, $page, $this->getSharedPerPageCount());
+        $files = $fileManager->fetchAllByPage($page, $this->getSharedPerPageCount(), false, $id);
 
         // Tweak pagination
-        $paginator = $this->getPaginator();
+        $paginator = $fileManager->getPaginator();
         $paginator->setUrl(sprintf('/admin/module/videogallery/category/%s/page/(:var)', $id));
 
         return $this->view->render('browser', array(
