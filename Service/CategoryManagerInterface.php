@@ -14,6 +14,13 @@ namespace Videogallery\Service;
 interface CategoryManagerInterface
 {
     /**
+     * Returns last category id
+     * 
+     * @return integer
+     */
+    public function getLastId();
+
+    /**
      * Fetches all category entities
      * 
      * @return array
