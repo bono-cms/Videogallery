@@ -36,6 +36,8 @@ abstract class AbstractCategory extends AbstractController
      */
     final protected function loadSharedPlugins()
     {
+        $this->view->getPluginBag()->appendScript('@Videogallery/admin/category.form.js')
+                                   ->load($this->getWysiwygPluginName());
     }
 
     /**
