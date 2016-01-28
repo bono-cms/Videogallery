@@ -17,6 +17,17 @@ use Krystal\Validate\Pattern;
 abstract class AbstractCategory extends AbstractController
 {
     /**
+     * Returns a tree with an empty prompt
+     * 
+     * @return array
+     */
+    final protected function getTree()
+    {
+        $text = sprintf('— %s —', $this->translator->translate('None'));
+        return $this->getModuleService('categoryManager')->fetchAllAsTreeWithPromt($text);
+    }
+
+    /**
      * Load breadcrumbs
      * 
      * @param string $title Title of the latest one

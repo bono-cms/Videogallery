@@ -30,7 +30,7 @@ final class Add extends AbstractCategory
         return $this->view->render('category.form', array(
             'title' => $title,
             'category' => new VirtualEntity(),
-            'categories' => $this->getModuleService('categoryManager')->fetchAllAsTreeWithPromt('— None —')
+            'categories' => $this->getTree()
         ));
     }
 
