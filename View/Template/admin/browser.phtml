@@ -11,8 +11,8 @@ use Krystal\Form\HtmlHelper;
         <span class="glyphicon glyphicon-list"></span> <?php $this->show('Menu'); ?> <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-         <li><a href="<?php echo $this->url('Videogallery:Admin:File:Add@indexAction'); ?>"><i class="glyphicon glyphicon-facetime-video"></i> <?php $this->show('Upload new file'); ?></a></li>
-         <li><a href="<?php echo $this->url('Videogallery:Admin:Category:Add@indexAction'); ?>"><i class="glyphicon glyphicon-book"></i> <?php $this->show('Add new category'); ?></a></li>
+         <li><a href="<?php echo $this->url('Videogallery:Admin:File@addAction'); ?>"><i class="glyphicon glyphicon-facetime-video"></i> <?php $this->show('Upload new file'); ?></a></li>
+         <li><a href="<?php echo $this->url('Videogallery:Admin:Category@addAction'); ?>"><i class="glyphicon glyphicon-book"></i> <?php $this->show('Add new category'); ?></a></li>
          <li class="divider"></li>
          <li><a href="#" data-button="save-changes"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save changes'); ?></a></li>
          <li><a href="#" data-button="remove-selected"><i class="glyphicon glyphicon-remove"></i> <?php $this->show('Remove selected'); ?></a></li>
@@ -61,7 +61,7 @@ use Krystal\Form\HtmlHelper;
                             </td>
                             <td>
                                 <a class="view" href="<?php echo $file->getUrl(); ?>"></a>
-                                <a class="edit" href="<?php echo $this->url('Videogallery:Admin:File:Edit@indexAction', $file->getId()); ?>"></a>
+                                <a class="edit" href="<?php echo $this->url('Videogallery:Admin:File@editAction', $file->getId()); ?>"></a>
                                 <a class="delete" href="#" data-id="<?php echo $file->getId(); ?>"></a>
                             </td>
                         </tr>
@@ -96,7 +96,7 @@ use Krystal\Form\HtmlHelper;
                         </a>
                     </td>
                     <td class="text-center">
-                        <a data-toggle="tooltip" data-placement="left" data-original-title="<?php $this->show('Edit this category'); ?>" data-button="edit" href="<?php echo $this->url('Videogallery:Admin:Category:Edit@indexAction', $id); ?>"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a data-toggle="tooltip" data-placement="left" data-original-title="<?php $this->show('Edit this category'); ?>" data-button="edit" href="<?php echo $this->url('Videogallery:Admin:Category@editAction', $id); ?>"><i class="glyphicon glyphicon-pencil"></i></a>
                         <a data-toggle="tooltip" data-placement="left" data-original-title="<?php $this->show('Remove this category'); ?>" data-button="delete" data-button="delete" data-category="category" data-id="<?php echo $id; ?>" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>

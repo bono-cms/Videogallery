@@ -10,7 +10,6 @@
  */
 
 return array(
-    
     '/admin/module/videogallery' => array(
         'controller' => 'Admin:Browser@indexAction'
     ),
@@ -28,34 +27,26 @@ return array(
     ),
     
     '/admin/module/videogallery/category/add' => array(
-        'controller' => 'Admin:Category:Add@indexAction'
-    ),
-
-    '/admin/module/videogallery/category/add.ajax' => array(
-        'controller' => 'Admin:Category:Add@addAction'
+        'controller' => 'Admin:Category@addAction'
     ),
 
     '/admin/module/videogallery/category/edit/(:var)' => array(
-        'controller' => 'Admin:Category:Edit@indexAction'
+        'controller' => 'Admin:Category@editAction'
     ),
 
-    '/admin/module/videogallery/category/edit.ajax' => array(
-        'controller' => 'Admin:Category:Edit@updateAction'
+    '/admin/module/videogallery/category/save' => array(
+        'controller' => 'Admin:Category@saveAction'
     ),
     
     '/admin/module/videogallery/file/add' => array(
-        'controller' => 'Admin:File:Add@indexAction'
-    ),
-    
-    '/admin/module/videogallery/file/add.ajax' => array(
-        'controller'=> 'Admin:File:Add@addAction'
+        'controller' => 'Admin:File@addAction'
     ),
     
     '/admin/module/videogallery/file/edit/(:var)' => array(
-        'controller' => 'Admin:File:Edit@indexAction'
+        'controller' => 'Admin:File@editAction'
     ),
     
-    '/admin/module/videogallery/file/edit.ajax' => array(
-        'controller' => 'Admin:File:Edit@updateAction'
+    '/admin/module/videogallery/file/save' => array(
+        'controller' => 'Admin:File@saveAction'
     )
 );
