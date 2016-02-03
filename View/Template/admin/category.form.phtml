@@ -29,7 +29,7 @@ use Krystal\Form\Element;
             <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
             <div class="col-lg-10">
                 <div class="input-group">
-                    <?php echo Element::textarea('category[description]', $category->getDescription()); ?>
+                    <?php echo Element::textarea('category[description]', $category->getDescription(), array('data-wysiwyg' => 'true')); ?>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                 </div>
             </div>
