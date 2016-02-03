@@ -55,7 +55,7 @@ final class Browser extends AbstractController
     private function createGrid(array $files, $url, $categoryId = null)
     {
         // Tweak pagination
-        $paginator = $fileManager->getPaginator();
+        $paginator = $this->getModuleService('fileManager')->getPaginator();
         $paginator->setUrl($url);
 
         // Append a breadcrumb

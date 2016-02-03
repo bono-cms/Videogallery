@@ -89,29 +89,7 @@ final class File extends AbstractController
      */
     public function deleteAction()
     {
-        // Batch removal
-        if ($this->request->hasPost('toDelete') && $this->request->isAjax()) {
-            $ids = $this->request->getPost('toDelete');
-
-            // Grab a service
-            $fileManager = $this->getModuleService('fileManager');
-            $fileManager->deleteByIds($ids);
-
-            $this->flashMessenger->set('success', 'Selected files have been removed successfully');
-        }
-
-        // Single removal
-        if ($this->request->hasPost('id') && $this->request->isAjax()) {
-            $id = $this->request->getPost('id');
-
-            // Grab a service
-            $fileManager = $this->getModuleService('fileManager');
-            $fileManager->deleteById($id);
-
-            $this->flashMessenger->set('success', 'File has been removed successfully');
-        }
-
-        return '1';
+        return $this->invokeRemoval('fileManager');
     }
 
     /**
@@ -123,7 +101,7 @@ final class File extends AbstractController
     {
         $input = $this->request->getPost('file');
 
-        $formValidator = $this->validatorFactory->build(array(
+        return $this->invokeSave('fileManager', $input['id'], $input, array(
             'input' => array(
                 'source' => $input,
                 'definition' => array(
@@ -132,23 +110,5 @@ final class File extends AbstractController
                 )
             )
         ));
-        
-        if ($formValidator->isValid()) {
-            $fileManager = $this->getFileManager();
-
-            if ($input['id']) {
-                $fileManager->update($input);
-                $this->flashMessenger->set('success', 'A file has been updated successfully');
-                return '1';
-
-            } else {
-                $fileManager->add($input);
-
-                $this->flashMessenger->set('success', 'A video has been added successfully');
-                return $fileManager->getLastId();
-            }
-        } else {
-            return $formValidator->getErrors();
-        }
     }
 }
