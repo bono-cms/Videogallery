@@ -12,7 +12,7 @@ use Krystal\Form\Element;
             <label class="col-lg-2 control-label"><?php $this->show('Title'); ?></label>
             <div class="col-lg-10">
                 <div class="input-group">
-                    <?php echo Element::text('category[title]', $category->getTitle(), array('class' => 'form-control', 'placeholder' => 'Type category title')); ?>
+                    <?php echo Element::text('category[title]', $category->getTitle(), array('class' => 'form-control', 'placeholder' => $this->translate('Type category title'))); ?>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                 </div>
             </div>
