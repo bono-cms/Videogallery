@@ -55,7 +55,10 @@ use Krystal\Form\Element;
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Order'); ?></label>
                 <div class="col-lg-10">
-                    <?php echo Element::text('order', $video->getOrder(), array('class' => 'form-control', 'placeholder' => $this->translate('Order of the video file to be displayed in category'))); ?>
+                    <div class="input-group">
+                        <?php echo Element::text('order', $video->getOrder(), array('class' => 'form-control', 'placeholder' => $this->translate('Order of the video file to be displayed in category'))); ?>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    </div>
                 </div>
             </div>
             
