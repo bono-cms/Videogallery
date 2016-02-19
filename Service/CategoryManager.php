@@ -127,7 +127,7 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
      */
     public function add(array $input)
     {
-        return $this->categoryMapper->insert($input);
+        return $this->categoryMapper->insert(ArrayUtils::arrayWithout($input, array('slug')));
     }
 
     /**
@@ -138,6 +138,6 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
      */
     public function update(array $input)
     {
-        return $this->categoryMapper->update($input);
+        return $this->categoryMapper->update(ArrayUtils::arrayWithout($input, array('slug')));
     }
 }
