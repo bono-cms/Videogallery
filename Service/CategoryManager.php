@@ -47,7 +47,10 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
         $entity->setId((int) $category['id'])
                ->setParentId((int) $category['parent_id'])
                ->setTitle($category['title'])
-               ->setDescription($category['description']);
+               ->setDescription($category['description'])
+               ->setSeo((bool) $category['seo'])
+               ->setKeywords($category['keywords'])
+               ->setMetaDescription($category['meta_description']);
 
         return $entity;
     }
