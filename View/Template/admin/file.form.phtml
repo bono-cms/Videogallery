@@ -15,6 +15,13 @@ use Krystal\Form\Element;
                 </div>
             </div>
         </div>
+
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label"><?php $this->show('Category'); ?></label>
+            <div class="col-lg-10">
+                <?php echo Element::select('video[category_id]', $categories, $video->getCategoryId(), array('class' => 'form-control')); ?>
+            </div>
+        </div>
         
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>

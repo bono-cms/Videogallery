@@ -36,7 +36,8 @@ final class File extends AbstractController
                    ->addOne($title);
 
         return $this->view->render('file.form', array(
-            'video' => $video
+            'video' => $video,
+            'categories' => $this->getModuleService('categoryManager')->fetchAllAsTree()
         ));
     }
 
