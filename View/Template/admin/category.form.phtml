@@ -31,6 +31,46 @@ use Krystal\Form\Element;
                 <?php echo Element::textarea('category[description]', $category->getDescription(), array('data-wysiwyg' => 'true')); ?>
             </div>
         </div>
+        
+        <div class="options">
+            
+            <div class="form-group clearfix">
+                <label class="col-lg-2 control-label"><?php $this->show('Enable SEO'); ?></label>
+                <div class="col-lg-10">
+                    <?php echo Element::checkbox('category[seo]', $category->getSeo(), array('class' => 'form-control')) ?>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="col-lg-2 control-label"><?php $this->show('Slug'); ?></label>
+                <div class="col-lg-10">
+                    <div class="input-group">
+                        <?php echo Element::text('category[slug]', $category->getSlug(), array('class' => 'form-control', 'data-input' => 'slug', 'placeholder' => $this->translate('URL slug for this category. By default is taken from a title'))); ?>
+                        <span class="input-group-addon">
+                            <a href="#" data-button="slug"><i class="glyphicon glyphicon-refresh" data-toggle="tooltip" title="<?php $this->show('Refresh the slug'); ?>"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group clearfix">
+                <label class="col-lg-2 control-label"><?php $this->show('Keywords'); ?></label>
+                <div class="col-lg-10">
+                    <div class="input-group">
+                        <?php echo Element::text('category[keywords]', $category->getKeywords(), array('class' => 'form-control', 'placeholder' => $this->translate('Keywords used for search engines'))); ?>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group clearfix">
+                <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
+                <div class="col-lg-10">
+                    <?php echo Element::textarea('category[meta_description]', $category->getMetaDescription(), array('class' => 'form-control', 'placeholder' => $this->translate('Meta description for search engines'))); ?>
+                </div>
+            </div>
+            
+        </div>
     </div>
     
     <?php if (!$category->getId()): ?>
