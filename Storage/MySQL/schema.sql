@@ -15,9 +15,12 @@ CREATE TABLE `bono_module_videogallery_files` (
 DROP TABLE IF EXISTS `bono_module_videogallery_categories`;
 CREATE TABLE `bono_module_videogallery_categories` (
 	`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `web_page_id` INT NOT NULL,
 	`lang_id` INT NOT NULL,
 	`parent_id` INT NOT NULL,
 	`title` varchar(254) NOT NULL,
-	`description` TEXT NOT NULL
-    
+	`description` TEXT NOT NULL,
+    `seo` varchar(1) NOT NULL,
+    `keywords` TEXT NOT NULL,
+    `meta_description` TEXT NOT NULL
 ) DEFAULT CHARSET = UTF8;
