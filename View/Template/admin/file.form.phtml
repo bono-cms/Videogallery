@@ -33,7 +33,7 @@ use Krystal\Form\Element;
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
             <div class="col-lg-10">
-                <?php echo Element::textarea('description', $video->getDescription()); ?>
+                <?php echo Element::textarea('description', $video->getDescription(), array('data-wysiwyg' => 'true')); ?>
             </div>
         </div>
         
