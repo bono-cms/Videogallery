@@ -17,6 +17,13 @@ use Krystal\Form\Element;
         </div>
         
         <div class="form-group clearfix">
+            <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
+            <div class="col-lg-10">
+                <?php echo Element::textarea('description', $video->getDescription(), array('data-wysiwyg' => 'true')); ?>
+            </div>
+        </div>
+
+        <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Image cover'); ?></label>
             <div class="col-lg-10">
                 <?php echo Element::file('imageFile'); ?>
@@ -27,13 +34,6 @@ use Krystal\Form\Element;
             <label class="col-lg-2 control-label"><?php $this->show('Video file'); ?></label>
             <div class="col-lg-10">
                 <?php echo Element::file('videoFile'); ?>
-            </div>
-        </div>
-        
-        <div class="form-group clearfix">
-            <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
-            <div class="col-lg-10">
-                <?php echo Element::textarea('description', $video->getDescription(), array('data-wysiwyg' => 'true')); ?>
             </div>
         </div>
         
