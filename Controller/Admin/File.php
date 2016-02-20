@@ -49,7 +49,8 @@ final class File extends AbstractController
     public function addAction()
     {
         $video = new VirtualEntity();
-        $video->setPublished(true);
+        $video->setPublished(true)
+              ->setSeo(true);
 
         return $this->createForm($video, 'Add a video');
     }
