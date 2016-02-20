@@ -63,7 +63,7 @@ final class File extends AbstractController
      */
     public function editAction($id)
     {
-        $video = $this->moduleService('fileManager')->fetchById($id);
+        $video = $this->getModuleService('fileManager')->fetchById($id);
 
         if ($video !== false) {
             return $this->createForm($video, 'Edit the file');
