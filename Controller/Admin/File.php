@@ -101,11 +101,12 @@ final class File extends AbstractController
      */
     public function saveAction()
     {
-        $input = $this->request->getPost('file');
+        $input = $this->request->getAll();
+        $data = $input['data']['video'];
 
-        return $this->invokeSave('fileManager', $input['id'], $input, array(
+        return $this->invokeSave('fileManager', $data['id'], $input, array(
             'input' => array(
-                'source' => $input,
+                'source' => $data,
                 'definition' => array(
                     'title' => new Pattern\Name(),
                     'description' => new Pattern\Description()
