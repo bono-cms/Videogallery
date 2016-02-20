@@ -26,7 +26,7 @@ use Krystal\Form\Element;
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
             <div class="col-lg-10">
-                <?php echo Element::textarea('description', $video->getDescription(), array('data-wysiwyg' => 'true')); ?>
+                <?php echo Element::textarea('video[description]', $video->getDescription(), array('data-wysiwyg' => 'true')); ?>
             </div>
         </div>
 
@@ -48,14 +48,14 @@ use Krystal\Form\Element;
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Enable SEO'); ?></label>
                 <div class="col-lg-10">
-                    <?php echo Element::checkbox('seo', $video->getSeo(), array('class' => 'form-control')); ?>
+                    <?php echo Element::checkbox('video[seo]', $video->getSeo(), array('class' => 'form-control')); ?>
                 </div>
             </div>
 
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Published'); ?></label>
                 <div class="col-lg-10">
-                    <?php echo Element::checkbox('published', $video->getPublished(), array('class' => 'form-control')); ?>
+                    <?php echo Element::checkbox('video[published]', $video->getPublished(), array('class' => 'form-control')); ?>
                 </div>
             </div>
             
@@ -63,7 +63,7 @@ use Krystal\Form\Element;
                 <label class="col-lg-2 control-label"><?php $this->show('Order'); ?></label>
                 <div class="col-lg-10">
                     <div class="input-group">
-                        <?php echo Element::text('order', $video->getOrder(), array('class' => 'form-control', 'placeholder' => $this->translate('Order of the video file to be displayed in category'))); ?>
+                        <?php echo Element::text('video[order]', $video->getOrder(), array('class' => 'form-control', 'placeholder' => $this->translate('Order of the video file to be displayed in category'))); ?>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ use Krystal\Form\Element;
                 <label class="col-lg-2 control-label"><?php $this->show('URL slug'); ?></label>
                 <div class="col-lg-10">
                     <div class="input-group">
-                        <?php echo Element::text('slug', $video->getSlug(), array('class' => 'form-control', 'placeholder' => $this->translate('URL slug for this page. By default is taken from a title'))); ?>
+                        <?php echo Element::text('video[slug]', $video->getSlug(), array('class' => 'form-control', 'placeholder' => $this->translate('URL slug for this page. By default is taken from a title'))); ?>
                         <span class="input-group-addon">
                             <a href="#" id="slug-btn">
                                 <i class="glyphicon glyphicon-refresh" data-toggle="tooltip" title="<?php $this->show('Refresh the slug'); ?>"></i>
@@ -87,7 +87,7 @@ use Krystal\Form\Element;
                 <label class="col-lg-2 control-label"><?php $this->show('Keywords'); ?></label>
                 <div class="col-lg-10">
                     <div class="input-group">
-                        <?php echo Element::text('keywords', $video->getKeywords(), array('class' => 'form-control', 'placeholder' => $this->translate('Keywords used for search engines'))); ?>
+                        <?php echo Element::text('video[keywords]', $video->getKeywords(), array('class' => 'form-control', 'placeholder' => $this->translate('Keywords used for search engines'))); ?>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ use Krystal\Form\Element;
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
                 <div class="col-lg-10">
-                    <?php echo Element::textarea('metaDescription', $video->getMetaDescription(), array('class' => 'form-control', 'placeholder' => $this->translate('Meta description for search engines'))); ?>
+                    <?php echo Element::textarea('video[metaDescription]', $video->getMetaDescription(), array('class' => 'form-control', 'placeholder' => $this->translate('Meta description for search engines'))); ?>
                 </div>
             </div>
         </div>
