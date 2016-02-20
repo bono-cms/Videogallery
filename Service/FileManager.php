@@ -12,6 +12,7 @@
 namespace Videogallery\Service;
 
 use Cms\Service\AbstractManager;
+use Cms\Service\WebPageManagerInterface;
 use Videogallery\Storage\FileMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
 
@@ -25,14 +26,23 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     private $fileMapper;
 
     /**
+     * Web page manager to deal with slugs
+     * 
+     * @var \Cms\Service\WebPageManagerInterface
+     */
+    private $webPageManager;
+
+    /**
      * State initialization
      * 
      * @param \Videogallery\Storage\FileMapperInterface $fileMapper
+     * @param \Cms\Service\WebPageManagerInterface $webPageManager
      * @return void
      */
-    public function __construct(FileMapperInterface $fileMapper)
+    public function __construct(FileMapperInterface $fileMapper, WebPageManagerInterface $webPageManager)
     {
         $this->fileMapper = $fileMapper;
+        $this->webPageManager = $webPageManager;
     }
 
     /**

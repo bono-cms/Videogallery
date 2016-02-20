@@ -25,8 +25,10 @@ final class Module extends AbstractCmsModule
         $categoryMapper = $this->getMapper('/Videogallery/Storage/MySQL/CategoryMapper');
         $fileMapper = $this->getMapper('/Videogallery/Storage/MySQL/FileMapper');
 
-        $fileManager = new FileManager($fileMapper);
-        $categoryManager = new CategoryManager($categoryMapper);
+        $wpm = $this->getWebPageManager();
+
+        $fileManager = new FileManager($fileMapper, $wpm);
+        $categoryManager = new CategoryManager($categoryMapper, $wpm);
 
         return array(
             'fileManager' => $fileManager,

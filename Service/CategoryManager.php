@@ -11,6 +11,7 @@
 
 namespace Videogallery\Service;
 
+use Cms\Service\WebPageManagerInterface;
 use Cms\Service\AbstractManager;
 use Videogallery\Storage\CategoryMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
@@ -28,14 +29,23 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
     private $categoryMapper;
 
     /**
+     * Web page manager to deal with slugs
+     * 
+     * @var \Cms\Service\WebPageManagerInterface
+     */
+    private $webPageManager;
+
+    /**
      * State initialization
      * 
      * @param \Videogallery\Storage\CategoryMapperInterface $categoryMapper
+     * @param \Cms\Service\WebPageManagerInterface $webPageManager
      * @return void
      */
-    public function __construct(CategoryMapperInterface $categoryMapper)
+    public function __construct(CategoryMapperInterface $categoryMapper, WebPageManagerInterface $webPageManager)
     {
         $this->categoryMapper = $categoryMapper;
+        $this->webPageManager = $webPageManager;
     }
 
     /**
