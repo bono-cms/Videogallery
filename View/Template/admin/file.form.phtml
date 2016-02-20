@@ -5,6 +5,8 @@ use Krystal\Form\Element;
 ?>
 
 <form>
+    <?php echo Element::hidden('video[id]', $video->getId()); ?>
+    
     <div class="well clearfix">
         <div class="form-group clearfix">
             <label class="col-lg-2 control-label"><?php $this->show('Title'); ?></label>
