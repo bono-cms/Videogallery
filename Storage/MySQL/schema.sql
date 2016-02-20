@@ -7,6 +7,8 @@ CREATE TABLE `bono_module_videogallery_files` (
 	`title` varchar(254) NOT NULL,
 	`name` varchar(254) NOT NULL,
 	`description` TEXT NOT NULL,
+    `seo` varchar(1) NOT NULL,
+    `published` varchar(1) NOT NULL,
 	`meta_description` TEXT NOT NULL,
 	`keywords` TEXT NOT NULL
 	
