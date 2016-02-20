@@ -98,7 +98,7 @@ use Krystal\Form\Element;
             <div class="form-group clearfix">
                 <label class="col-lg-2 control-label"><?php $this->show('Description'); ?></label>
                 <div class="col-lg-10">
-                    <?php echo Element::textarea('video[metaDescription]', $video->getMetaDescription(), array('class' => 'form-control', 'placeholder' => $this->translate('Meta description for search engines'))); ?>
+                    <?php echo Element::textarea('video[meta_description]', $video->getMetaDescription(), array('class' => 'form-control', 'placeholder' => $this->translate('Meta description for search engines'))); ?>
                 </div>
             </div>
         </div>
