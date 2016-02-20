@@ -104,13 +104,13 @@ use Krystal\Form\Element;
     
     <?php if (!$video->getId()): ?>
     
-    <button data-button="add" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add'); ?></button>
-    <button data-toggle="add-create" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add & Upload new'); ?></button>
+    <button data-button="add" data-back-url="<?php echo $this->url('Videogallery:Admin:File@editAction', null); ?>" data-url="<?php echo $this->url('Videogallery:Admin:File@saveAction'); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add'); ?></button>
+    <button data-toggle="add-create" data-url="<?php echo $this->url('Videogallery:Admin:File@saveAction'); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Add & Upload new'); ?></button>
     
     <?php else: ?>
     
-    <button data-button="save" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save'); ?></button>
-    <button data-toggle="save-create" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save & Upload new'); ?></button>
+    <button data-button="save" data-url="<?php echo $this->url('Videogallery:Admin:File@saveAction'); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save'); ?></button>
+    <button data-toggle="save-create" data-back-url="<?php echo $this->url('Videogallery:Admin:File@addAction'); ?>" data-url="<?php echo $this->url('Videogallery:Admin:File@saveAction'); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save & Upload new'); ?></button>
     
     <?php endif; ?>
     
