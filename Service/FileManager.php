@@ -13,6 +13,7 @@ namespace Videogallery\Service;
 
 use Cms\Service\AbstractManager;
 use Cms\Service\WebPageManagerInterface;
+use Cms\Service\HistoryManagerInterface;
 use Videogallery\Storage\FileMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
 use Krystal\Stdlib\ArrayUtils;
@@ -34,16 +35,25 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     private $webPageManager;
 
     /**
+     * History manager to keep tracks
+     * 
+     * @var \Cms\Service\HistoryManagerInterface
+     */
+    private $historyManager;
+
+    /**
      * State initialization
      * 
      * @param \Videogallery\Storage\FileMapperInterface $fileMapper
      * @param \Cms\Service\WebPageManagerInterface $webPageManager
+     * @param \Cms\Service\HistoryManagerInterface $historyManager
      * @return void
      */
-    public function __construct(FileMapperInterface $fileMapper, WebPageManagerInterface $webPageManager)
+    public function __construct(FileMapperInterface $fileMapper, WebPageManagerInterface $webPageManager, HistoryManagerInterface $historyManager)
     {
         $this->fileMapper = $fileMapper;
         $this->webPageManager = $webPageManager;
+        $this->historyManager = $historyManager;
     }
 
     /**
@@ -64,6 +74,18 @@ final class FileManager extends AbstractManager implements FileManagerInterface
                ->setKeywords($file['keywords']);
 
         return $entity;
+    }
+
+    /**
+     * Tracks activity
+     * 
+     * @param string $message
+     * @param string $placeholder
+     * @return boolean
+     */
+    private function track($message, $placeholder)
+    {
+        return $this->historyManager->write('Videogallery', $message, $placeholder);
     }
 
     /**

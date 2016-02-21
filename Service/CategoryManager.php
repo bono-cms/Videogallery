@@ -13,6 +13,7 @@ namespace Videogallery\Service;
 
 use Cms\Service\WebPageManagerInterface;
 use Cms\Service\AbstractManager;
+use Cms\Service\HistoryManagerInterface;
 use Videogallery\Storage\CategoryMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
 use Krystal\Stdlib\ArrayUtils;
@@ -36,16 +37,25 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
     private $webPageManager;
 
     /**
+     * History manager to keep tracks
+     * 
+     * @var \Cms\Service\HistoryManagerInterface
+     */
+    private $historyManager;
+
+    /**
      * State initialization
      * 
      * @param \Videogallery\Storage\CategoryMapperInterface $categoryMapper
      * @param \Cms\Service\WebPageManagerInterface $webPageManager
+     * @param \Cms\Service\HistoryManagerInterface $historyManager
      * @return void
      */
-    public function __construct(CategoryMapperInterface $categoryMapper, WebPageManagerInterface $webPageManager)
+    public function __construct(CategoryMapperInterface $categoryMapper, WebPageManagerInterface $webPageManager, HistoryManagerInterface $historyManager)
     {
         $this->categoryMapper = $categoryMapper;
         $this->webPageManager = $webPageManager;
+        $this->historyManager = $historyManager;
     }
 
     /**
@@ -63,6 +73,18 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
                ->setMetaDescription($category['meta_description']);
 
         return $entity;
+    }
+
+    /**
+     * Tracks activity
+     * 
+     * @param string $message
+     * @param string $placeholder
+     * @return boolean
+     */
+    private function track($message, $placeholder)
+    {
+        return $this->historyManager->write('Videogallery', $message, $placeholder);
     }
 
     /**
