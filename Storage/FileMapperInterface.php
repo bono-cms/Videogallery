@@ -14,6 +14,33 @@ namespace Videogallery\Storage;
 interface FileMapperInterface
 {
     /**
+     * Updates sorting order by associated id
+     * 
+     * @param string $id
+     * @param string $order
+     * @return boolean
+     */
+    public function updateOrderById($id, $order);
+
+    /**
+     * Update file's published state by its associated id
+     * 
+     * @param string $id Post id
+     * @param string $published Either 0 or 1
+     * @return boolean
+     */
+    public function updatePublishedById($id, $published);
+
+    /**
+     * Updates whether file's SEO is enabled or not by its associated id
+     * 
+     * @param string $id Post id
+     * @param string $published Either 0 or 1
+     * @return boolean
+     */
+    public function updateSeoById($id, $seo);
+
+    /**
      * Fetches a record by its associated id
      * 
      * @param string $id

@@ -37,6 +37,42 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
     }
 
     /**
+     * Updates sorting order by associated id
+     * 
+     * @param string $id
+     * @param string $order
+     * @return boolean
+     */
+    public function updateOrderById($id, $order)
+    {
+        return $this->updateColumnByPk($id, 'order', $order);
+    }
+
+    /**
+     * Update file's published state by its associated id
+     * 
+     * @param string $id Post id
+     * @param string $published Either 0 or 1
+     * @return boolean
+     */
+    public function updatePublishedById($id, $published)
+    {
+        return $this->updateColumnByPk($id, 'published', $published);
+    }
+
+    /**
+     * Updates whether file's SEO is enabled or not by its associated id
+     * 
+     * @param string $id Post id
+     * @param string $published Either 0 or 1
+     * @return boolean
+     */
+    public function updateSeoById($id, $seo)
+    {
+        return $this->updateColumnByPk($id, 'seo', $seo);
+    }
+
+    /**
      * Fetches all records filtered by pagination
      * 
      * @param integer $page
