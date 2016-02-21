@@ -15,6 +15,7 @@ use Cms\Service\AbstractManager;
 use Cms\Service\WebPageManagerInterface;
 use Videogallery\Storage\FileMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
+use Krystal\Stdlib\ArrayUtils;
 
 final class FileManager extends AbstractManager implements FileManagerInterface
 {
@@ -51,6 +52,17 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     protected function toEntity(array $file)
     {
         $entity = new VirtualEntity();
+        $entity->setId($file['id'])
+               ->setLangId($file['lang_id'])
+               ->setCategoryId($file['category_id'])
+               ->setTitle($file['title'])
+               ->setDescription($file['description'])
+               ->setOrder((int) $file['order'])
+               ->setSeo((bool) $file['seo'])
+               ->setPublished((bool) $file['published'])
+               ->setMetaDescription($file['meta_description'])
+               ->setKeywords($file['keywords']);
+
         return $entity;
     }
 
@@ -93,7 +105,12 @@ final class FileManager extends AbstractManager implements FileManagerInterface
      */
     public function add(array $input)
     {
-        return $this->fileMapper->insert($input);
+        $input = $this->prepareInput($input);
+
+        // Form data
+        $data = $input['data']['video'];
+
+        return $this->fileMapper->insert(ArrayUtils::arrayWithout($data, array('slug')));
     }
 
     /**
@@ -104,7 +121,12 @@ final class FileManager extends AbstractManager implements FileManagerInterface
      */
     public function update(array $input)
     {
-        return $this->fileMapper->update($input);
+        $input = $this->prepareInput($input);
+
+        // Form data
+        $data = $input['data']['video'];
+
+        return $this->fileMapper->update(ArrayUtils::arrayWithout($data, array('slug')));
     }
 
     /**
