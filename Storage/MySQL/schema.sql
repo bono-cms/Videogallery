@@ -5,7 +5,6 @@ CREATE TABLE `bono_module_videogallery_files` (
 	`lang_id` INT NOT NULL,
 	`category_id` INT NOT NULL,
 	`title` varchar(254) NOT NULL,
-	`name` varchar(254) NOT NULL,
 	`description` TEXT NOT NULL,
     `order` INT NOT NULL,
     `seo` varchar(1) NOT NULL,
