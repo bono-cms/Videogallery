@@ -67,6 +67,57 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     }
 
     /**
+     * Update orders
+     * 
+     * @param array $orders
+     * @return boolean
+     */
+    public function updateOrders(array $orders)
+    {
+        foreach ($orders as $id => $order) {
+            if (!$this->fileMapper->updateOrderById($id, $order)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Update published states
+     * 
+     * @param array $published
+     * @return boolean
+     */
+    public function updatePublished(array $published)
+    {
+        foreach ($published as $id => $value) {
+            if (!$this->fileMapper->updatePublishedById($id, $value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Update SEO states
+     * 
+     * @param array $seo
+     * @return boolean
+     */
+    public function updateSeo(array $seo)
+    {
+        foreach ($seo as $id => $value) {
+            if (!$this->fileMapper->updateSeoById($id, $value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Prepares an input
      * 
      * @param array $input Raw input data
