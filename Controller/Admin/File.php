@@ -66,7 +66,7 @@ final class File extends AbstractController
         $video = $this->getModuleService('fileManager')->fetchById($id);
 
         if ($video !== false) {
-            return $this->createForm($video, 'Edit the file');
+            return $this->createForm($video, 'Edit the video');
         } else {
             return false;
         }
