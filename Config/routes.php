@@ -14,6 +14,16 @@ return array(
         'controller' => 'Admin:Browser@indexAction'
     ),
 
+    '/admin/module/videogallery/tweak' => array(
+        'controller' => 'Admin:File@tweakAction',
+        'disallow' => array('guest')
+    ),
+
+    '/admin/module/videogallery/video/delete' => array(
+        'controller' => 'Admin:File@deleteAction',
+        'disallow' => array('guest')
+    ),
+    
     '/admin/module/videogallery/page/(:var)' => array(
         'controller' => 'Admin:Browser@indexAction'
     ),
