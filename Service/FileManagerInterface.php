@@ -84,6 +84,14 @@ interface FileManagerInterface
     public function deleteById($id);
 
     /**
+     * Deletes a collection of video files by their associated ids
+     * 
+     * @param array $ids
+     * @return boolean
+     */
+    public function deleteByIds(array $ids);
+
+    /**
      * Fetch all records filtered by pagination
      * 
      * @param integer $page

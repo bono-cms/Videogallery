@@ -225,6 +225,23 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     }
 
     /**
+     * Deletes a collection of video files by their associated ids
+     * 
+     * @param array $ids
+     * @return boolean
+     */
+    public function deleteByIds(array $ids)
+    {
+        foreach ($ids as $id) {
+            if (!$this->fileMapper->deleteById($id)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Fetch all records filtered by pagination
      * 
      * @param integer $page
