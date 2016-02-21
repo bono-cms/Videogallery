@@ -80,7 +80,18 @@ final class File extends AbstractController
     public function tweakAction()
     {
         if ($this->request->isPost() && $this->request->isAjax()) {
-            // @TODO
+
+            $orders = $this->request->getPost('order');
+            $published = $this->request->getPost('published');
+            $seo = $this->request->getPost('seo');
+
+            $fm = $this->getModuleService('fileManager');
+            $fm->updateOrders($orders);
+            $fm->updatePublished($published);
+            $fm->updateSeo($seo);
+
+            $this->flashBag->set('success', 'Settings have been updated successfully');
+            return '1';
         }
     }
 
