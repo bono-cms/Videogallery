@@ -22,7 +22,7 @@ final class FileMapper extends AbstractMapper implements FileMapperInterface
      */
     public static function getTableName()
     {
-        return 'bono_module_videogallery_files';
+        return self::getWithPrefix('bono_module_videogallery_files');
     }
 
     /**
