@@ -24,7 +24,7 @@ final class Browser extends AbstractController
     public function indexAction($page = 1)
     {
         $files = $this->getModuleService('fileManager')->fetchAllByPage($page, $this->getSharedPerPageCount(), false);
-        $url = '/admin/module/videogallery/page/(:var)';
+        $url = $this->createUrl('Videogallery:Admin:Browser@indexAction', array(), 1);
 
         return $this->createGrid($files, $url, null);
     }
@@ -39,7 +39,7 @@ final class Browser extends AbstractController
     public function categoryAction($id, $page = 1)
     {
         $files = $this->getModuleService('fileManager')->fetchAllByPage($page, $this->getSharedPerPageCount(), false, $id);
-        $url = sprintf('/admin/module/videogallery/category/%s/page/(:var)', $id);
+        $url = $this->createUrl('Videogallery:Admin:Browser@categoryAction', array($id), 1);
 
         return $this->createGrid($files, $url, $id);
     }
