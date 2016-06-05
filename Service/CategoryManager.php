@@ -64,13 +64,13 @@ final class CategoryManager extends AbstractManager implements CategoryManagerIn
     protected function toEntity(array $category)
     {
         $entity = new VirtualEntity();
-        $entity->setId((int) $category['id'])
-               ->setParentId((int) $category['parent_id'])
-               ->setTitle($category['title'])
-               ->setDescription($category['description'])
-               ->setSeo((bool) $category['seo'])
-               ->setKeywords($category['keywords'])
-               ->setMetaDescription($category['meta_description']);
+        $entity->setId($category['id'], VirtualEntity::FILTER_INT)
+               ->setParentId($category['parent_id'], VirtualEntity::FILTER_INT)
+               ->setTitle($category['title'], VirtualEntity::FILTER_TAGS)
+               ->setDescription($category['description'], VirtualEntity::FILTER_SAFE_TAGS)
+               ->setSeo($category['seo'], VirtualEntity::FILTER_BOOL)
+               ->setKeywords($category['keywords'], VirtualEntity::FILTER_TAGS)
+               ->setMetaDescription($category['meta_description'], VirtualEntity::FILTER_TAGS);
 
         return $entity;
     }

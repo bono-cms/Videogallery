@@ -62,16 +62,16 @@ final class FileManager extends AbstractManager implements FileManagerInterface
     protected function toEntity(array $file)
     {
         $entity = new VirtualEntity();
-        $entity->setId($file['id'])
-               ->setLangId($file['lang_id'])
-               ->setCategoryId($file['category_id'])
-               ->setTitle($file['title'])
-               ->setDescription($file['description'])
-               ->setOrder((int) $file['order'])
-               ->setSeo((bool) $file['seo'])
-               ->setPublished((bool) $file['published'])
-               ->setMetaDescription($file['meta_description'])
-               ->setKeywords($file['keywords']);
+        $entity->setId($file['id'], VirtualEntity::FILTER_INT)
+               ->setLangId($file['lang_id'], VirtualEntity::FILTER_INT)
+               ->setCategoryId($file['category_id'], VirtualEntity::FILTER_INT)
+               ->setTitle($file['title'], VirtualEntity::FILTER_TAGS)
+               ->setDescription($file['description'], VirtualEntity::FILTER_SAFE_TAGS)
+               ->setOrder($file['order'], VirtualEntity::FILTER_INT)
+               ->setSeo($file['seo'], VirtualEntity::FILTER_BOOL)
+               ->setPublished($file['published'], VirtualEntity::FILTER_BOOL)
+               ->setMetaDescription($file['meta_description'], VirtualEntity::FILTER_TAGS)
+               ->setKeywords($file['keywords'], VirtualEntity::FILTER_TAGS);
 
         return $entity;
     }
