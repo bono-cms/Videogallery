@@ -21,7 +21,7 @@ use Krystal\Form\HtmlHelper;
     </div>
 </div>
 
-<?php $this->loadBlock('items-per-page', array('caption' => 'Video-gallery')); ?>
+<?php $this->loadPartial('items-per-page', array('caption' => 'Video-gallery')); ?>
 
 <form>
     <div class="row">
@@ -119,4 +119,4 @@ use Krystal\Form\HtmlHelper;
     </div>
 </form>
 
-<?php $this->loadBlock('paginator'); ?>
+<?php $this->loadPartial('paginator'); ?>
