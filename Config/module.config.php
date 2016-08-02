@@ -2,6 +2,7 @@
 
 return array(
  'name'  => 'Videogallery',
+ 'caption'  => 'Videogallery',
  'route' => 'Videogallery:Admin:Browser@indexAction',
  'icon'  => 'fa fa-video-camera fa-5x',
  'order' => 1,
