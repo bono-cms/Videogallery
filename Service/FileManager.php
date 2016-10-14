@@ -65,13 +65,13 @@ final class FileManager extends AbstractManager implements FileManagerInterface
         $entity->setId($file['id'], VirtualEntity::FILTER_INT)
                ->setLangId($file['lang_id'], VirtualEntity::FILTER_INT)
                ->setCategoryId($file['category_id'], VirtualEntity::FILTER_INT)
-               ->setTitle($file['title'], VirtualEntity::FILTER_TAGS)
+               ->setTitle($file['title'], VirtualEntity::FILTER_HTML)
                ->setDescription($file['description'], VirtualEntity::FILTER_SAFE_TAGS)
                ->setOrder($file['order'], VirtualEntity::FILTER_INT)
                ->setSeo($file['seo'], VirtualEntity::FILTER_BOOL)
                ->setPublished($file['published'], VirtualEntity::FILTER_BOOL)
-               ->setMetaDescription($file['meta_description'], VirtualEntity::FILTER_TAGS)
-               ->setKeywords($file['keywords'], VirtualEntity::FILTER_TAGS);
+               ->setMetaDescription($file['meta_description'], VirtualEntity::FILTER_HTML)
+               ->setKeywords($file['keywords'], VirtualEntity::FILTER_HTML);
 
         return $entity;
     }
